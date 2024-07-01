@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  reviewapp:
+    build: .
+    container_name: reviewAppContainer
+    ports:
+      - "8082:8082"
+    environment:
+      - FESTIVAL_APP_BASE_URL=http://festivalapp:8081
+    networks:
+      - app-network
+    depends_on:
+      - festivalapp
+
+networks:
+  app-network:
+    driver: bridge

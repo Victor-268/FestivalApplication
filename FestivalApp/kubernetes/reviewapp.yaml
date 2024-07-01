@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviewapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reviewapp
+  template:
+    metadata:
+      labels:
+        app: reviewapp
+    spec:
+      containers:
+        - name: reviewapp
+          image: your-docker-registry/reviewapp:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: FESTIVAL_APP_BASE_URL
+              value: http://festivalapp:8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviewapp
+spec:
+  selector:
+    app: reviewapp
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082

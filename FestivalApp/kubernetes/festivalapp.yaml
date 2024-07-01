@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: festivalapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: festivalapp
+  template:
+    metadata:
+      labels:
+        app: festivalapp
+    spec:
+      containers:
+        - name: festivalapp
+          image: your-docker-registry/festivalapp:latest
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgresql:5432/mydatabase
+            - name: SPRING_DATASOURCE_USERNAME
+              value: user
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: your_password
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: festivalapp
+spec:
+  selector:
+    app: festivalapp
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081

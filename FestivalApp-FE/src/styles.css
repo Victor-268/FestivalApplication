@@ -1,0 +1,41 @@
+/* styles.css */
+
+/* Apply the background image to the entire body */
+body {
+  background-image: url('assets/background.jpg');
+  background-size: cover; /* Cover the entire page */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-attachment: fixed; /* Keep the background image fixed during scroll */
+  background-position: center; /* Center the background image */
+  margin: 0; /* Remove default margin */
+  font-family: Arial, sans-serif; /* Default font */
+}
+
+/* Ensure all content is readable on the background */
+.container {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for readability */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Headings */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4a4a4a;
+}
+
+/* ... existing styles ... */
+
+/* Example of more specific styling for a component */
+.app-content {
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly more transparent background */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 1200px;
+}
